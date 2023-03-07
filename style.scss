@@ -1,16 +1,15 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: consolas;
-}
 
-body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #000;
+@use 'base';
+$basic: linear-gradient(45deg, #ffbc00, #ff0058);
+
+@mixin theme($theme: $basic) {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: $theme;
 }
 
 .container {
@@ -39,27 +38,22 @@ body {
   transform: translateY(-20px);
 }
 
+
 .container .box::before,
 .container .box::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(45deg, #ffbc00, #ff0058);
+    @include theme($theme: linear-gradient(45deg, #ffbc00, #ff0058));
 }
 .container .box::after {
   filter: blur(30px);
 }
 .container .box:nth-child(2):before,
 .container .box:nth-child(2):after {
-  background: linear-gradient(315deg, #03a9f4, #ff0058);
+    @include theme($theme: linear-gradient(315deg, #03a9f4, #ff0058));
 }
 
 .container .box:nth-child(3):before,
 .container .box:nth-child(3):after {
-  background: linear-gradient(315deg, #4dff03, #00d0ff);
+    @include theme($theme: linear-gradient(315deg, #4dff03, #00d0ff));
 }
 
 .container .box span {
